@@ -1,0 +1,19 @@
+# Machine Learning Sample Code
+
+## Class
+* Supervised Learning 
+
+* Unsupervised Learning
+
+## R Language
+**R** is a very powerful language. Below are some R code
+
+```{r}
+hist(rnorm(100))
+```
+
+
+```{r fig.width=7, fig.height=6}
+plot(cars)
+```
+
