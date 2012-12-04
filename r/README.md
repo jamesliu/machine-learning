@@ -13,7 +13,7 @@
 hist(rnorm(100))
 ```
 
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1.png) 
+![plot of chunk unnamed-chunk-1](blob/figure/unnamed-chunk-1.png) 
 
 
 
@@ -22,6 +22,6 @@ hist(rnorm(100))
 plot(cars)
 ```
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2.png) 
+![plot of chunk unnamed-chunk-2](blob/figure/unnamed-chunk-2.png) 
 
 
