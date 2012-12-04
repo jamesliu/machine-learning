@@ -1,0 +1,20 @@
+# Predict Stock Return
+
+Let's take DDD as an example. I will set daily average price be approximated by 
+$$
+P_i = (C_i + H_i + L_i) / 3
+$$
+
+```{r cache=TRUE, warning=FALSE}
+# let's load quantmod library
+library(quantmod)
+getSymbols("DDD")
+summary(DDD)
+```
+
+## The last 3 months Chart
+
+```{r fig.width=7, fig.height=6}
+#candleChart(last(DDD, "3 months"), theme="white", TA = NULL)
+```
+
