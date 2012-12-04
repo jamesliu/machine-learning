@@ -1,4 +1,4 @@
-
+getSymbols("DDD")
 signals = cbind(Cl(DDD), runMin(DDD, 30))
 signals = cbind(signals, signals[,1] - signals[,2])
 signals = cbind (signals,diff(sign(signals[,3])))

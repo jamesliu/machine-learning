@@ -5,16 +5,34 @@ $$
 P_i = (C_i + H_i + L_i) / 3
 $$
 
-```{r cache=TRUE, warning=FALSE}
-# let's load quantmod library
+Let $V_i$ be the percentag variations of today's close to the following $k$ days average prices
+
+```{r cache=FALSE, echo=FALSE, message=FALSE, include=FALSE}
+# let's load quantmod library and get symbol DDD
 library(quantmod)
 getSymbols("DDD")
-summary(DDD)
 ```
 
-## The last 3 months Chart
+```{r}
+avgP = function(symbol) {
+   apply(HLC(symbol), 1, mean)  
+}
+
+indicator = function(symbol, margin = 0.05,  days = 5) {
+  p = avgP(symbol)
+  # initialize NA matrix
+  r = matrix(NS, ncol = days, nrow = NROW(symbol)
+  # calculate Vi
+  for (x in 1:days) {r[, x] = Next(Delt(p, k=x ), x)
+}
+```
+
+## Summary and Chart
 
 ```{r fig.width=7, fig.height=6}
-#candleChart(last(DDD, "3 months"), theme="white", TA = NULL)
+summary(DDD)
+candleChart(last(DDD, "3 months"), theme="white", TA = NULL)
+addAvgP = newTA(FUN=avgP, col = 1, legend  ="AvgPrice")
+addAvgP(on = 1)
 ```
 
