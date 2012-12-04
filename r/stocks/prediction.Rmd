@@ -42,11 +42,19 @@ vtable = function(symbol, margin = 0.05,  days = 5) {
   r = matrix(NA, ncol = days, nrow = NROW(symbol))
   # calculate Vi
   for (x in 1:days) r[, x] = Next(Delt(p, k=x ), x)
-  v = apply(r[1: (NROW(r) - days),], 1, function(y) sum(y[y> margin | x < -margin]))
-  v
+  r
 }
 
-last(vtable(DDD),10)
+indicator = function(symbol, margin = 0.05, days = 5) {
+   r = vtable(symbol, margin, days)
+   v = apply(r[1: (NROW(r) - days),], 1, function(y) sum(y[y> margin | y < -margin]))
+   if (is.xts(symbol))
+     xts(v, time(symbol[1: (NROW(symbol) - days),]))
+   else 
+     v
+}
+addIndicator = newTA(FUN=indicator, col= "red", legend = "tgtReturn")
+addIndicator()
 ```
 
 
