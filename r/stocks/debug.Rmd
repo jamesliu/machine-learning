@@ -1,0 +1,22 @@
+# Debug Trading Model in R
+
+The easy way to dubug the function in R is to use **debug** function
+
+```{r}
+debug(specifyModel)
+```
+
+
+
+When you finish
+
+```{r}
+undebug(sepcifyModel)
+```
+
+You can also embed plots, for example:
+
+```{r fig.width=7, fig.height=6}
+plot(cars)
+```
+
