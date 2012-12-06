@@ -38,3 +38,25 @@ policy.1 <- function(signals,market,opened.pos,money,
                                               market[d, "Close"]*(1-exp.prof),
                                               market[d, "Close"]*(1+max.loss)
                                               ),
+                                      
+                                      action = c("open", "close", "close"),
+                                      posID = c(NA,NA,NA)
+                                      )
+                           )
+         }
+     # Now lets check if we need to close positions
+     # because their holding time is over
+     if (nOs)
+       for(i in 1:nOs) {
+         if (d - opened.pos[i, "Odate"] >= hold.time)
+           orders <- rbind(orders,
+                           data.frame(order=-opened.pos[i, "pos.type"],
+                                      order.type=1,
+                                      val = NA,
+                                      action = "close",
+                                      posID = rownames(opened.pos)[i]
+                                      )
+                           )
+       }
+     orders
+}
