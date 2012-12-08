@@ -55,4 +55,12 @@ slide <- function(form, train, test, learner, relearn.step,
   eval.stats(form, train, test, p, policy.func = policy.func)
 }
 
-grow <- function(form, train, test, learner, relearn.step,+ policy.func, ...) { + real.learner <- learner(paste("MC", learner, sep = "."),+ pars = list(...))+ p <- growingWindowTest(real.learner, form, train, test,+ relearn.step)+ p <- factor(p, levels = 1:3, labels = c("s", "h", "b"))+ eval.stats(form, train, test, p, policy.func = policy.func)
+grow <- function(form, train, test, learner, relearn.step,
+                 policy.func, ...) {
+  real.learner <- learner(paste("MC", learner, sep = "."),
+                          pars = list(...))
+  p <- growingWindowTest(real.learner, form, train, test,
+                         relearn.step)
+  p <- factor(p, levels = 1:3, labels = c("s", "h", "b"))
+  eval.stats(form, train, test, p, policy.func = policy.func)
+}
