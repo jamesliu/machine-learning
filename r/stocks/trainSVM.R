@@ -16,3 +16,9 @@ p <- predict(s,Tdata.train[ts,])
 sig <- trading.signals(p,0.1,-0.1)
 # now using the simulated trader
 t1 <- trading.simulator(market,sig,'policy.1',list(exp.prof=0.05,bet=0.2,hold.time=30))
+
+t1
+summary(t1)
+tradingEvaluation(t1)
+
+plot(t1, market, theme = "white", name = "DDD")
