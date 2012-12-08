@@ -8,15 +8,18 @@ MC.svmR <- function(form, train, test, b.t = 0.1, s.t = -0.1,
 
 MC.svmC <- function(form, train, test, b.t = 0.1, s.t = -0.1,
                     ...) {
-  require(e1071)+ tgtName <- all.vars(form)[1]
+  require(e1071)
+  tgtName <- all.vars(form)[1]
   train[, tgtName] <- trading.signals(train[, tgtName],+ b.t, s.t)
-  t <- svm(form, train, ...)+ p <- predict(t, test)
+  t <- svm(form, train, ...)
+  p <- predict(t, test)
   factor(p, levels = c("s", "h", "b"))
 }
 
 MC.nnetR <- function(form, train, test, b.t = 0.1, s.t = -0.1,
                      ...) {
-  require(nnet)+ t <- nnet(form, train, ...)
+  require(nnet)
+  t <- nnet(form, train, ...)
   p <- predict(t, test)
   trading.signals(p, b.t, s.t)
 }
