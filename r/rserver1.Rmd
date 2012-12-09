@@ -1,15 +1,16 @@
 # RStudio Server Setup in VPN Part I 
 
-The server is on Ubuntu and client is MacBook Pro
+RStudio is a great IDE to use. Recently I started to toy with RStudio server. My goal is to have RStudo server installed on Ubuntu box so that I can use it with my MacBook Pro from anywhere.
+Installation is miraculous easy to instructions provided on the web site.
 
-## Server Configuration
+# Server Configuration
 The configuration file is **/etc/rstudio/rserve.conf**
 ### Port and Address
 ```
 www-port=6767
 ```
 RStudio server will bind to address 0.0.0.0. 
-> We'd better change this by adding **www-address** entry instead of accepting connections from any remote IP
+> It is better to change this by adding **www-address** entry instead of accepting connections from any remote IP
 
 ```
 www-address=127.0.0.1
@@ -18,7 +19,11 @@ www-address=127.0.0.1
 ## Server Administration
 
 ### Create RStudio User
-
+Once the server successfully installed, create a new user like so:
+```
+sudo useradd -d /home/ruser -m ruser
+sudo passwd ruser
+```
 ### Start and Stop
 ```
 $ sudo /usr/sbin/rstudio-server start

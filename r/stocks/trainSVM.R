@@ -1,3 +1,4 @@
+require("DMwR")
 # Train and test
 start <- 1
 len.tr <- 100

@@ -1,3 +1,4 @@
+require("DMwR")
 start <- 70
 len.tr <- 100
 len.ts <- 50
