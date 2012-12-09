@@ -1,0 +1,34 @@
+# RStudio Server Setup in VPN Part I 
+
+The server is on Ubuntu and client is MacBook Pro
+
+## Server Configuration
+The configuration file is **/etc/rstudio/rserve.conf**
+### Port and Address
+```
+www-port=6767
+```
+RStudio server will bind to address 0.0.0.0. 
+> We'd better change this by adding **www-address** entry instead of accepting connections from any remote IP
+
+```
+www-address=127.0.0.1
+```
+
+## Server Administration
+
+### Create RStudio User
+
+### Start and Stop
+```
+$ sudo /usr/sbin/rstudio-server start
+$ sudo /usr/sbin/rstudio-server restart
+$ sudo /usr/sbin/rstudio-server stop
+```
+
+## Login 
+```
+http://127.0.0.1:6767
+```
+
+However, the server can only be connected from 127.0.0.1 in this example. In part II, I will set up VPN so that we can use RStudio Server from anywhere with better security.
