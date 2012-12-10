@@ -1,4 +1,4 @@
-
+# Set up environment
 setwd("~/github/machine-learning/r/stocks/")
 
 # Removing any extra objects from my workspace
