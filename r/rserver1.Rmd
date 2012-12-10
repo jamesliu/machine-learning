@@ -4,7 +4,7 @@
 It turns out the installation is miraculously easy. Although the details can be found [in the instructions provided on the web site](http://www.rstudio.com/ide/docs/server/getting_started), I summarize the ins and outs of the whole process. 
 
 ## Download and Installation
-It is rather straightforward. Just [follow this page](http://www.rstudio.com/ide/download/server) to download and install packages from different platforms. 
+It is rather straightforward. Just [follow this page](http://www.rstudio.com/ide/download/server) to download and install packages from different platforms. Af first, install [R packages for Ubuntu](http://cran.r-project.org/bin/linux/ubuntu/README.html). 
 
 ## Server Configuration
 The configuration file is in **/etc/rstudio/rserver.conf**. The two important settings are below:
@@ -27,19 +27,72 @@ The configuration file is in **/etc/rstudio/rserver.conf**. The two important se
 Once the server successfully installed, create a new user like so:
 
   ```
-sudo useradd -d /home/ruser -m ruser
-sudo passwd ruser
+ sudo useradd -d /home/ruser -m ruser
+ sudo passwd ruser
   ```
 2. Start and Stop  
 
   ```
-$ sudo /usr/sbin/rstudio-server start
-$ sudo /usr/sbin/rstudio-server restart
-$ sudo /usr/sbin/rstudio-server stop
+ sudo /usr/sbin/rstudio-server start
+ sudo /usr/sbin/rstudio-server restart
+ sudo /usr/sbin/rstudio-server stop
   ```
 
 ## Login 
   All I had to do was to fire up a browser and go to `http://127.0.0.1:6767`
+  
+> **Glitches and Gotcha**  
+> I couldn't install "ggplot2" library. The reason was my ubuntu's **R** version was too old - version 2.11.1 (2010-05-31). After upgrading both **Ubuntu** and **R**, the problem was sovled! 
+> * Check **Ubuntu** and **R** version 
+>
+>   ```    
+> lsb_release -a
+> apt-cache showpkg r-base`
+>   ```
+> * Prepare to Upgrade
+> 
+>   ```
+> echo "titan" > /etc/hostname
+> hostname -F /etc/hostname
+>  ```
+>
+> * Upgrade to **Ubuntu 12.04**(Precise)
+>   1. Install the update-manager-core package if it's not already installed:
+>
+>      ```
+> sudo apt-get install update-manager-core
+>      ```
+>   2. Open the /etc/update-manager/release-upgrades file for editing and verify that 
+> the following line is present in the file, and that Prompt is set to lts:
+>
+>      ```
+> Prompt=lts
+>      ```
+>   3. Upgrade to Ubuntu 12.04 LTS by entering the following command:
+>
+>      ```
+>  sudo do-release-upgrade -d
+>      ```
+>   4. Follow the on-screen instructions to complete the installation process.
+> When the upgrade process completes, verify that it's running Ubuntu 12.04 LTS by entering the following command:
+> 
+>      ```
+>   cat /etc/lsb-release
+>      ```
+> You should see output that resembles the following:
+>      ```
+> DISTRIB_ID=Ubuntu
+> DISTRIB_RELEASE=12.04
+> DISTRIB_CODENAME=precise
+> DISTRIB_DESCRIPTION="Ubuntu 12.04"
+>     ```
+> * Upgrade to **R 2.15**
+> 
+>   ```
+> echo "deb http://cran.mirrors.hoobly.com/bin/linux/ubuntu precise/" >> /etc/apt/sources.list
+> gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
+> gpg -a --export E084DAB9 | sudo apt-key add -
+>   ```
 
 ## In Conclusion
 After typing user name and password, what showed up on my browser was identical to the desktop version of **RStudio**. However, the server can only be connected from 127.0.0.1 in this example. In part II, I will set up [VPN(Virtual Private Network)](http://en.wikipedia.org/wiki/Virtual_private_network) so that I can access **RStudio** Server from anywhere. 
