@@ -1,3 +1,5 @@
+require(DMwR)
+
 eval.stats <- function(form,train,test,preds,b.t=0.1,s.t=-0.1,...) {
   # Signals evaluation
   tgtName <- all.vars(form)[1]
