@@ -127,8 +127,9 @@ hr {
 
 code {
   color:#1111FF;
-  padding: 0.5em;
+  padding: 0.1em;
   border: 1px solid #ccc;
+  background-color: #F8F8F8;
 }
 
 blockquote {

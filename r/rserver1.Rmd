@@ -1,39 +1,45 @@
 # RStudio Server Setup in VPN Part I 
 
-RStudio is a great IDE to use. Recently I started to toy with RStudio server. My goal is to have RStudo server installed on Ubuntu box so that I can use it with my MacBook Pro from anywhere.
-Installation is miraculous easy to instructions provided on the web site.
+**RStudio** is a great IDE to use when using **R**. Recently I started to toy with **RStudio** server. My goal is to have **RStudio** server installed on Ubuntu box so that I can access my **R** from any computer in any location. That will be the biggest win.
+It turns out the installation is miraculously easy. Although the details can be found [in the instructions provided on the web site](http://www.rstudio.com/ide/docs/server/getting_started), I summarize the ins and outs of the whole process. 
 
-# Server Configuration
-The configuration file is **/etc/rstudio/rserve.conf**
-### Port and Address
-```
-www-port=6767
-```
-RStudio server will bind to address 0.0.0.0. 
-> It is better to change this by adding **www-address** entry instead of accepting connections from any remote IP
+## Download and Installation
+It is rather straightforward. Just [follow this page](http://www.rstudio.com/ide/download/server) to download and install packages from different platforms. 
 
-```
-www-address=127.0.0.1
-```
+## Server Configuration
+The configuration file is in **/etc/rstudio/rserver.conf**. The two important settings are below:
+
+1. WWW Port 
+  ```
+   www-port=6767
+  ```
+       
+2. WWW Address  
+> **RStudio** server will bind to address 0.0.0.0. It is better to change this by adding **www-address** entry instead of accepting connections from any remote IP  
+ 
+  ```
+  www-address=127.0.0.1
+  ```
 
 ## Server Administration
 
-### Create RStudio User
+1. Create **RStudio** User
 Once the server successfully installed, create a new user like so:
-```
+
+  ```
 sudo useradd -d /home/ruser -m ruser
 sudo passwd ruser
-```
-### Start and Stop
-```
+  ```
+2. Start and Stop  
+
+  ```
 $ sudo /usr/sbin/rstudio-server start
 $ sudo /usr/sbin/rstudio-server restart
 $ sudo /usr/sbin/rstudio-server stop
-```
+  ```
 
 ## Login 
-```
-http://127.0.0.1:6767
-```
+  All I had to do was to fire up a browser and go to `http://127.0.0.1:6767`
 
-However, the server can only be connected from 127.0.0.1 in this example. In part II, I will set up VPN so that we can use RStudio Server from anywhere with better security.
+## In Conclusion
+After typing user name and password, what showed up on my browser was identical to the desktop version of **RStudio**. However, the server can only be connected from 127.0.0.1 in this example. In part II, I will set up [VPN(Virtual Private Network)](http://en.wikipedia.org/wiki/Virtual_private_network) so that I can access **RStudio** Server from anywhere. 

@@ -1,0 +1,10 @@
+My first few days with MAPR on AWS(Amazon Web Services)
+========================================================
+
+It was all started with [Hadoop Summit](http://hadoopsummit.org/). I visited [**MapR Technologies**](http://www.mapr.com) during the confefernce and received a \$$50$ **Amazon** Gift Card. 
+By following the instructions on the flyer, I landed the page - [Amazon EMR with the MapR Distribution for Hadoop](http://aws.amazon.com/elasticmapreduce/mapr/). One of AWS case studies drew my eyes immediately. The purpose is to break the record of solving the shortest vector problem (SVP) in Euclidean lattices. The research group is Fast Crypto Lab within [**National Taiwan University**](https://aws.amazon.com/solutions/case-studies/national-taiwan-university/). They used Hadoop Streaming in their architecture, and run their programs with Amazon Elastic MapReduce and Cluster GPU Instances for Amazon EC2.  
+
+The Amazon EMR process is as the following chart(excerpted from Amazon) ![Amazon Elastic MapReduce](https://s3.amazonaws.com/jde_website/HadoopProcessingDiagram.png)
+
+Firstly, I went to the AWS management console and chose **Elastic MapReduce**. I clicked `Created New Job Flow` button.
+I was given three options for Hadoop Version: Hadoop 1.0.3, MapR M3 v1.2 or M5 v1.2. I chose **MapR** M5 Hadoop Version and [Contextual Advertising using Apache Hive and Amazon EMR Sample Code](http://aws.amazon.com/code/Elastic-MapReduce/2855)
