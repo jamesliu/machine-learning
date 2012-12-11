@@ -5,11 +5,11 @@ setwd("~/github/machine-learning/r/stocks/")
 rm(list=ls())
 
 # functions
+source("indicators.R")
 source("montecarlo.R")
 source("policy.R")
 
 # load and clean
-source("indicators.R")
-
+source("features.R")
 
 source("evaluation.R")
