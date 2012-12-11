@@ -120,8 +120,8 @@ DSs <- list(dataset(Tform,Tdata.train,'DDD'))
 
 # Monte Carlo (MC) settings used
 MCsetts <- mcSettings(10,     # 10 repetitions of the MC exps
-                      124,   # ~ half year for training
-                      62,   # ~ 2 months for testing
+                      120,   # ~ half year for training
+                      60,   # ~ 2 months for testing
                       1234)   # random number generator seed
 
 # Variants to try for all learners
