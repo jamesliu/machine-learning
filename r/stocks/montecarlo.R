@@ -1,3 +1,7 @@
+require(e1071)
+require(nnet)
+require(earth)
+
 MC.svmR <- function(form, train, test, b.t = 0.1, s.t = -0.1,
                     ...) {
   require(e1071)
