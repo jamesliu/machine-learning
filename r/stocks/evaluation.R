@@ -4,7 +4,7 @@ require(DMwR)
 monteCarlo2 =function (learner, data.set, mcSet, itsInfo = F, verbose = T) 
 {
   show(mcSet)
-  
+
   itsI <- results <- NULL
   n <- NROW(data.set@data)
   train.size <- if (mcSet@mcTrain < 1) 
@@ -93,7 +93,7 @@ eval.stats <- function(form,train,test,preds,b.t=0.1,s.t=-0.1,...) {
   # Trading evaluation
 
   date <- rownames(test)[1]
-  market <- DDD[paste(date,"/",sep='')][1:length(preds),]
+  market <- ThisTicker[paste(date,"/",sep='')][1:length(preds),]
   trade.res <- trading.simulator(market,preds,...)
 
   c(st,tradingEvaluation(trade.res))
@@ -116,12 +116,12 @@ pol3 <- function(signals,market,op,money)
 TODO <- c('svmR','svmC','earth','nnetR','nnetC')
 
 # The data sets used in the comparison
-DSs <- list(dataset(Tform,Tdata.train,'DDD'))
+DSs <- list(dataset(Tform,Tdata.train,'ThisTicker'))
 
 # Monte Carlo (MC) settings used
-MCsetts <- mcSettings(10,     # 10 repetitions of the MC exps
-                      120,   # ~ half year for training
-                      60,   # ~ 2 months for testing
+MCsetts <- mcSettings(2,     # 10 repetitions of the MC exps
+                      240,   # ~ half year for training
+                      120,   # ~ 2 months for testing
                       1234)   # random number generator seed
 
 # Variants to try for all learners
@@ -150,12 +150,12 @@ for(td in TODO) {
                        varsRootName=paste('single',td,sep='.'))),
              do.call('variants',
                      c(list('slide',learner=td,
-                            relearn.step=c(30,60)),
+                            relearn.step=c(60,120)),
                        VARS[[td]],
                        varsRootName=paste('slide',td,sep='.'))),
              do.call('variants',
                      c(list('grow',learner=td,
-                            relearn.step=c(30,60)),
+                            relearn.step=c(60,120)),
                        VARS[[td]],
                        varsRootName=paste('grow',td,sep='.')))
              ),
