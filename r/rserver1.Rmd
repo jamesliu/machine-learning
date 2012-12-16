@@ -52,8 +52,8 @@ Once the server successfully installed, create a new user like so:
 > * Prepare to Upgrade
 > 
 >   ```
-> echo "titan" > /etc/hostname
-> hostname -F /etc/hostname
+> sudo echo "titan" > /etc/hostname
+> sudo hostname -F /etc/hostname
 >  ```
 >
 > * Upgrade to **Ubuntu 12.04**(Precise)
@@ -86,12 +86,14 @@ Once the server successfully installed, create a new user like so:
 > DISTRIB_CODENAME=precise
 > DISTRIB_DESCRIPTION="Ubuntu 12.04"
 >     ```
-> * Upgrade to **R 2.15**
-> 
+> * Upgrade to **R 2.15**  
+> The details can be found on [this page](http://cran.r-project.org/bin/linux/ubuntu/)
 >   ```
-> echo "deb http://cran.mirrors.hoobly.com/bin/linux/ubuntu precise/" >> /etc/apt/sources.list
-> gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
-> gpg -a --export E084DAB9 | sudo apt-key add -
+> sudo echo "deb http://cran.mirrors.hoobly.com/bin/linux/ubuntu precise/" >> /etc/apt/sources.list
+> sudo gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
+> sudo gpg -a --export E084DAB9 | sudo apt-key add -
+> sudo apt-get update
+> sudo apt-get install r-base
 >   ```
 
 ## In Conclusion
